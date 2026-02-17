@@ -63,4 +63,5 @@ Task_Manager/
 ## License
 
 MIT License - Feel free to use and modify as needed!
+CI Trigger Test
 
