@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Productivity Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>Task Manager</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" data-page="home" class="active">Home</a></li>
+            <li><a href="#" data-page="tasks">Tasks</a></li>
+            <li><a href="#" data-page="about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container">
+        
+        <!-- Home Page Section -->
+        <section id="home" class="page-section active">
+            <div class="welcome-card">
+                <h2>Welcome to Task Manager</h2>
+                <p>Your personal productivity dashboard to manage your daily tasks efficiently.</p>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3 id="totalTasks">0</h3>
+                        <p>Total Tasks</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="completedTasks">0</h3>
+                        <p>Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="pendingTasks">0</h3>
+                        <p>Pending</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="navigateTo('tasks')">Get Started</button>
+            </div>
+        </section>
+
+        <!-- Tasks Page Section -->
+        <section id="tasks" class="page-section">
+            <div class="tasks-header">
+                <h2>My Tasks</h2>
+                <button class="btn btn-danger" id="deleteAllBtn">Delete All</button>
+            </div>
+            
+            <!-- Add Task Input -->
+            <div class="add-task-container">
+                <input type="text" id="taskInput" placeholder="Enter a new task..." class="task-input">
+                <button id="addTaskBtn" class="btn btn-primary">Add Task</button>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-filter-container">
+                <input type="text" id="searchInput" placeholder="Search tasks..." class="search-input">
+                <div class="filter-buttons">
+                    <button class="btn btn-filter active" data-filter="all">All</button>
+                    <button class="btn btn-filter" data-filter="pending">Pending</button>
+                    <button class="btn btn-filter" data-filter="completed">Completed</button>
+                </div>
+            </div>
+
+            <!-- Task List Container -->
+            <div id="taskList" class="task-list">
+                <!-- Tasks will be dynamically added here -->
+            </div>
+
+            <!-- Empty State Message -->
+            <div id="emptyState" class="empty-state">
+                <p>No tasks yet. Add your first task above!</p>
+            </div>
+
+            <button class="btn btn-secondary back-btn" onclick="navigateTo('home')">Back to Home</button>
+        </section>
+
+        <!-- About Page Section -->
+        <section id="about" class="page-section">
+            <div class="about-card">
+                <h2>About Task Manager</h2>
+                <p>Task Manager is a simple yet powerful productivity tool designed to help you organize and track your daily tasks.</p>
+                
+                <div class="features-list">
+                    <h3>Features:</h3>
+                    <ul>
+                        <li>Add and manage tasks easily</li>
+                        <li>Mark tasks as completed</li>
+                        <li>Delete individual tasks</li>
+                        <li>Delete all tasks with confirmation</li>
+                        <li>Track your progress with task counts</li>
+                        <li>Responsive design for all devices</li>
+                    </ul>
+                </div>
+
+                <div class="tech-info">
+                    <h3>Built With:</h3>
+                    <p>HTML5, CSS3, JavaScript (Vanilla)</p>
+                    <p>No frameworks or libraries used</p>
+                </div>
+
+                <button class="btn btn-secondary" onclick="navigateTo('home')">Back to Home</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for Delete Confirmation -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Delete All</h3>
+            <p>Are you sure you want to delete all tasks? This action cannot be undone.</p>
+            <div class="modal-buttons">
+                <button id="confirmDelete" class="btn btn-danger">Delete All</button>
+                <button id="cancelDelete" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
