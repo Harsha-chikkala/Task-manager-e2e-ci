@@ -1,67 +1,198 @@
-# Task Manager - Productivity Dashboard
+# Task Manager – E2E Automation with CI Pipeline
 
-A simple and elegant Task Manager web application built with pure HTML, CSS, and JavaScript. No frameworks or libraries required.
+🚀 Project Overview
 
-## Features
+This project demonstrates a complete End-to-End (E2E) Automation Pipeline built using:
 
-### Core Features
-- ✅ **Add Tasks** - Easily add new tasks with the input field
-- ✅ **Delete Tasks** - Remove individual tasks with a click
-- ✅ **Mark Complete** - Toggle task completion with checkboxes
-- ✅ **Task Statistics** - View total, completed, and pending task counts
+- HTML, CSS, JavaScript (Vanilla) – Frontend application
+- Playwright (Java) – E2E Automation Testing
+- Maven – Build & Dependency Management
+- GitHub Actions – Continuous Integration (CI)
+- GitHub Pages – Application Deployment
 
-### Additional Features
-- 🔍 **Search Tasks** - Real-time search to find specific tasks
-- 🎯 **Filter Tasks** - Filter by All / Pending / Completed
-- 💾 **Data Persistence** - Tasks saved in localStorage (survives page refresh)
-- 🗑️ **Delete All** - Modal confirmation before deleting all tasks
+The pipeline automatically runs E2E tests on every push to the main branch.
 
-### UI/UX Features
-- 📱 **Responsive Design** - Works on mobile, tablet, and desktop
-- ✨ **Smooth Animations** - Fade-in transitions between pages
-- 🎨 **Modern Design** - Clean gradient background with card-based layout
-- 🔘 **Hover Effects** - Interactive buttons and navigation
+🌐 Live Application
 
-## Pages
+🔗 Deployed via GitHub Pages
 
-1. **Home** - Welcome dashboard with task statistics
-2. **Tasks** - Main task management page with add/search/filter
-3. **About** - Information about the app
+https://<your-username>.github.io/task-manager-e2e-ci/
 
-## Tech Stack
-
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with animations
-- **JavaScript** - Vanilla JS (no frameworks)
-
-## How to Use
-
-1. Open `index.html` in any web browser
-2. Navigate to the Tasks page
-3. Enter a task in the input box and click "Add Task" or press Enter
-4. Use checkboxes to mark tasks as complete
-5. Use the search bar to find specific tasks
-6. Use filter buttons to show All/Pending/Completed tasks
-
-## Project Structure
+🏗 Architecture
 
 ```
-Task_Manager/
-├── index.html      # Main HTML structure
-├── style.css       # All styling and animations
-├── script.js       # JavaScript functionality
-└── README.md       # This file
+Frontend App (HTML/CSS/JS)
+        ↓
+Playwright Java Tests
+        ↓
+Maven Build
+        ↓
+GitHub Actions CI
+        ↓
+Automatic Test Execution on Push
 ```
 
-## Browser Support
+📂 Project Structure
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+```
+task-manager-e2e-ci/
+│
+├── index.html
+├── style.css
+├── script.js
+│
+├── pom.xml
+├── src/
+│   └── test/
+│       └── java/
+│           └── tests/
+│               └── TaskManagerTest.java
+│
+└── .github/
+    └── workflows/
+        └── playwright.yml
+```
 
-## License
+🧩 Application Features
 
-MIT License - Feel free to use and modify as needed!
-CI Trigger Test
+✅ Core Features
+
+- Add Tasks
+- Delete Individual Tasks
+- Delete All (with confirmation modal)
+- Mark Tasks as Completed
+- Task Count (Total / Completed / Pending)
+- Page Navigation (Home / Tasks / About)
+- LocalStorage Persistence
+
+🚀 Advanced UI Features
+
+- Real-time Search
+- Filter Tasks (All / Pending / Completed)
+- Smart Empty State Messages
+- Responsive Design
+- Modal Confirmation System
+
+🧪 E2E Test Coverage
+
+The Playwright automation suite covers:
+
+| Test Case | Description |
+|-----------|-------------|
+| Home Page Load | Verifies application loads correctly |
+| Navigation | Validates page switching |
+| Add Task | Confirms task creation flow |
+| Search | Validates real-time search functionality |
+| Filter | Tests completed/pending filtering |
+| Delete All | Verifies modal confirmation behavior |
+
+⚙️ Tech Stack
+
+**Frontend**
+- HTML5
+- CSS3
+- Vanilla JavaScript
+
+**Automation**
+- Playwright (Java)
+- JUnit 5
+
+**CI/CD**
+- GitHub Actions
+- Maven
+
+🧠 Key Engineering Decisions
+
+✅ **Cross-Platform File Navigation**
+
+CI runs in a Linux environment.
+Tests use:
+
+```java
+Paths.get("index.html").toAbsolutePath().toUri().toString();
+```
+
+to ensure compatibility across:
+- macOS
+- Linux (GitHub Runner)
+- Windows
+
+✅ **Headless Browser in CI**
+
+CI runs with:
+
+```java
+.setHeadless(true)
+```
+
+to support non-GUI environments.
+
+✅ **Isolated Browser Lifecycle**
+
+- @BeforeAll → Launch Browser
+- @BeforeEach → Create New Page
+- @AfterEach → Close Page
+- @AfterAll → Close Browser
+
+Ensures clean test execution.
+
+🔄 CI Workflow
+
+Workflow File: `.github/workflows/playwright.yml`
+
+**Trigger Conditions**
+- On push to main
+- Manual trigger (workflow_dispatch)
+
+**Pipeline Steps**
+1. Checkout repository
+2. Setup Java 17
+3. Build Maven project
+4. Install Playwright browsers
+5. Run E2E tests
+6. Fail build if any test fails
+
+🟢 CI Status
+
+Add this badge to the top of your README:
+
+```
+![CI](https://github.com/<your-username>/task-manager-e2e-ci/actions/workflows/playwright.yml/badge.svg)
+```
+
+🛠 How to Run Locally
+
+**1️⃣ Clone Repository**
+```bash
+git clone https://github.com/<your-username>/task-manager-e2e-ci.git
+cd task-manager-e2e-ci
+```
+
+**2️⃣ Install Playwright Browsers**
+```bash
+mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install"
+```
+
+**3️⃣ Run Tests**
+```bash
+mvn clean test
+```
+
+🏆 What This Project Demonstrates
+
+- ✔ Frontend Development
+- ✔ Automation Engineering
+- ✔ CI/CD Integration
+- ✔ Cross-Platform Compatibility
+- ✔ Real-World Debugging
+- ✔ Git Workflow Management
+
+📈 Future Improvements
+
+- Implement Page Object Model (POM)
+- Add parallel browser execution
+- Upload test reports as CI artifacts
+- Add branch protection rules
+- Add Dockerized execution
+- Add Pull Request validation pipeline
 
