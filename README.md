@@ -16,7 +16,7 @@ The pipeline automatically runs E2E tests on every push to the main branch.
 
 🔗 Deployed via GitHub Pages
 
-https://<your-username>.github.io/task-manager-e2e-ci/
+https://harsha-chikkala.github.io/Task-manager-e2e-ci/
 
 🏗 Architecture
 
