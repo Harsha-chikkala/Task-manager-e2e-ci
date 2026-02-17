@@ -11,7 +11,7 @@ public class TaskManagerTest {
     static Browser browser;
     Page page;
 
-    private final String BASE_URL = "https://harsha-chikkala.github.io/Task-manager-e2e-ci/";
+    private final String BASE_URL = "page.navigate(\"file://\" + System.getProperty(\"user.dir\") + \"/index.html\");\n";
 
     @BeforeAll
     static void launchBrowser() {
